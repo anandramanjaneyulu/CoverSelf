@@ -82,8 +82,7 @@ public class PromotionSetA implements Promotion {
 				str.append("get " + maxPercentage + "% off");
 				JSONObject discount1 = new JSONObject();
 				discount1.put("amount", maxDiscount);
-
-				discount1.put("discountTag", str.toString());
+                discount1.put("discountTag", str.toString());
 				jsonObj.put("discount", discount1);
 			}
 

@@ -9,9 +9,9 @@ import com.flipdeal.servicesImpl.ServicesImpl;
 public class PromotionSetB implements Promotion {
 	public JSONArray calcuteDiscount() {
 		ServicesImpl services = new ServicesImpl();
-		JSONArray jsonArray = services.modifyAllCurrenciesToINR();
-		for (int i = 0; i < jsonArray.length(); i++) {
-			JSONObject jsonObj = (JSONObject) jsonArray.get(i);
+		JSONArray jsonObjArray = services.modifyAllCurrenciesToINR();
+		for (int i = 0; i < jsonObjArray.length(); i++) {
+			JSONObject jsonObj = (JSONObject) jsonObjArray.get(i);
 			Double price = (Double) jsonObj.getDouble("price");
 			Integer inventory = (Integer) jsonObj.get("inventory");
 			  
@@ -20,9 +20,8 @@ public class PromotionSetB implements Promotion {
 			Double percentage = 0.00;
 			Double maxPercentage = 0.00;
          	if (inventory > 20) {
-				
+				discount = (price * 12) / 100;
 				percentage = 12.00;
-				discount = (price * percentage) / 100;
 				if (maxDiscount < discount) {
 					maxDiscount = discount;
 					maxPercentage = percentage;
@@ -59,12 +58,13 @@ public class PromotionSetB implements Promotion {
 				str.append("get " + maxPercentage + "% off");
 				JSONObject discount1 = new JSONObject();
 				discount1.put("amount", maxDiscount);
-                discount1.put("discountTag", str.toString());
+
+				discount1.put("discountTag", str.toString());
 				jsonObj.put("discount", discount1);
 			}
 
 		}
-		return jsonArray;
+		return jsonObjArray;
 
 	}
 }
