@@ -22,24 +22,24 @@ public class PromotionSetA implements Promotion {
 
 			Double discount = 0.00;
 			Double maxDiscount = 0.00;
-
-			Double percentage = 0.00;
-
-			Double maxPercentage = 0.00;
-			;
+            Double percentage = 0.00;
+            Double maxPercentage = 0.00;
+			
 
 		
 			if (origin.equals("Africa")) {
-				discount = (price * 7) / 100;
 				percentage = 7.00;
+				discount = (price * percentage) / 100;
+				
 				if (maxDiscount < discount) {
 					maxDiscount = discount;
 					maxPercentage = percentage;
 				}
 			}
 			if (rating == 2) {
-				discount = (price * 4) / 100;
+				
 				percentage = 4.00;
+				discount = (price * percentage) / 100;
 				if (maxDiscount < discount) {
 					maxDiscount = discount;
 					maxPercentage = percentage;
@@ -47,8 +47,9 @@ public class PromotionSetA implements Promotion {
 
 			}
 			if (rating < 2) {
-				discount = (price * 8) / 100;
+				
 				percentage = 8.00;
+				discount = (price * percentage) / 100;
 				if (maxDiscount < discount ) {
 					maxDiscount = discount;
 					maxPercentage = percentage;
@@ -69,8 +70,9 @@ public class PromotionSetA implements Promotion {
 			}
 			if (maxDiscount == 0.00) {
 				if (price > 1000) {
-					maxDiscount = (price * 2) / 100;
-					maxPercentage = 2.00;
+			    maxPercentage = 2.00;
+			    maxDiscount = (price * maxPercentage) / 100;
+
 				}
 			}
 			if (maxDiscount != 0.00) {
