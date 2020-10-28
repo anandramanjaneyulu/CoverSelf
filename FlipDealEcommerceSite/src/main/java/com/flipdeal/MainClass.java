@@ -24,7 +24,9 @@ public class MainClass {
 			JSONArray jsonArray = setA.calcuteDiscount();
 			System.out.println(jsonArray);
 			services.createOutputJSONFile(jsonArray);
-		} else {
+		} 
+		if(num == 2)
+		{
 			Promotion setB = new PromotionSetB();
 			JSONArray jsonArray = setB.calcuteDiscount();
 			System.out.println(jsonArray);
