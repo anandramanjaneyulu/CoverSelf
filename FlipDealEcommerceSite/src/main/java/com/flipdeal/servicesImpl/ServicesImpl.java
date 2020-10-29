@@ -17,26 +17,26 @@ import com.flipdeal.services.Services;
 public class ServicesImpl implements Services {
 
 	public JSONArray modifyAllCurrenciesToINR() {
-		JSONArray objJSONArray = retrieveJSONArray();
-		JSONObject objJSON = retriveJSONObject();
-		JSONArray jsonObjArray = new JSONArray();
-		for (int i = 0; i < objJSONArray.length(); i++) {
-			JSONObject objJSON1 = (JSONObject) objJSONArray.get(i);
-			if (!objJSON1.get("currency").equals("INR")) {
-				Double foreignPrice = (Double) objJSON.get((String) objJSON1.get("currency"));
-				Double indianPrice = (Double) objJSON.get("INR");
-				Double price = (Double) objJSON1.getDouble("price");
+		JSONArray jsonArray = retrieveJSONArray();
+		JSONObject jsonObj = retriveJSONObject();
+		JSONArray jsonArray1 = new JSONArray();
+		for (int i = 0; i < jsonArray.length(); i++) {
+			JSONObject jsonObj1 = (JSONObject) jsonArray.get(i);
+			if (!jsonObj1.get("currency").equals("INR")) {
+				Double foreignPrice = (Double) jsonObj.get((String) jsonObj1.get("currency"));
+				Double indianPrice = (Double) jsonObj.get("INR");
+				Double price = (Double) jsonObj1.getDouble("price");
 				Double convertedPrice;
 				convertedPrice = ((indianPrice * price) / foreignPrice);
 				convertedPrice = (double) (Math.round(convertedPrice * 100) / 100);
-				objJSON1.put("currency", "INR");
-				objJSON1.put("price", convertedPrice);
+				jsonObj1.put("currency", "INR");
+				jsonObj1.put("price", convertedPrice);
 
 			}
-			jsonObjArray.put(i, objJSON1);
+			jsonArray1.put(i, jsonObj1);
 
 		}
-		return jsonObjArray;
+		return jsonArray1;
 
 	}
 
@@ -66,9 +66,9 @@ public class ServicesImpl implements Services {
 
 				String json = response.toString();
 
-				JSONObject objJSON = new JSONObject(response.toString());
-				JSONObject objJSON1 = objJSON.getJSONObject("rates");
-				return objJSON1;
+				JSONObject jsonObj = new JSONObject(response.toString());
+				JSONObject jsonObj1 = jsonObj.getJSONObject("rates");
+				return jsonObj1;
 			} else {
 				System.out.println("Get Not Worked");
 			}
@@ -108,8 +108,8 @@ public class ServicesImpl implements Services {
 
 				String json = response.toString();
 
-				JSONArray objJSONArray = new JSONArray(json);
-				return objJSONArray;
+				JSONArray jsonArray = new JSONArray(json);
+				return jsonArray;
 			} else {
 
 			}

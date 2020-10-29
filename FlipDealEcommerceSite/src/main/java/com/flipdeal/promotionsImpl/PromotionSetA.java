@@ -11,9 +11,9 @@ public class PromotionSetA implements Promotion {
 
 	public JSONArray calcuteDiscount() {
 		Services services = new ServicesImpl();
-		JSONArray jsonObjArray = services.modifyAllCurrenciesToINR();
-		for (int i = 0; i < jsonObjArray.length(); i++) {
-			JSONObject jsonObj = (JSONObject) jsonObjArray.get(i);
+		JSONArray jsonArray = services.modifyAllCurrenciesToINR();
+		for (int i = 0; i < jsonArray.length(); i++) {
+			JSONObject jsonObj = (JSONObject) jsonArray.get(i);
 			String origin = (String) jsonObj.get("origin");
 			Float rating = (Float) jsonObj.getFloat("rating");
 			Double price = jsonObj.getDouble("price");
@@ -87,7 +87,7 @@ public class PromotionSetA implements Promotion {
 			}
 
 		}
-		return jsonObjArray;
+		return jsonArray;
 
 	}
 

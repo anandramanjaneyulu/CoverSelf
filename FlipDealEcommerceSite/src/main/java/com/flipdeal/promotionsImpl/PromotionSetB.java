@@ -4,14 +4,15 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.flipdeal.promotions.Promotion;
+import com.flipdeal.services.Services;
 import com.flipdeal.servicesImpl.ServicesImpl;
 
 public class PromotionSetB implements Promotion {
 	public JSONArray calcuteDiscount() {
-		ServicesImpl services = new ServicesImpl();
-		JSONArray jsonObjArray = services.modifyAllCurrenciesToINR();
-		for (int i = 0; i < jsonObjArray.length(); i++) {
-			JSONObject jsonObj = (JSONObject) jsonObjArray.get(i);
+		Services services = new ServicesImpl();
+		JSONArray jsonArray = services.modifyAllCurrenciesToINR();
+		for (int i = 0; i < jsonArray.length(); i++) {
+			JSONObject jsonObj = (JSONObject) jsonArray.get(i);
 			Double price = (Double) jsonObj.getDouble("price");
 			Integer inventory = (Integer) jsonObj.get("inventory");
 			  
@@ -64,7 +65,7 @@ public class PromotionSetB implements Promotion {
 			}
 
 		}
-		return jsonObjArray;
+		return jsonArray;
 
 	}
 }
