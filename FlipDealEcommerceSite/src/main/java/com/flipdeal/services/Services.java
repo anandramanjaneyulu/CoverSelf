@@ -6,7 +6,7 @@ import org.json.JSONObject;
 public interface Services {
 	public JSONArray modifyAllCurrenciesToINR();
 
-	public JSONObject retriveJSONObject();
+	public JSONObject retriveRatesJSONObject();
 
 	public JSONArray retrieveJSONArray();
 

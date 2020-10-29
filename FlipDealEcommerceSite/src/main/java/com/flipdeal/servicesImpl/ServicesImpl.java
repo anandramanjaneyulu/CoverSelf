@@ -18,7 +18,7 @@ public class ServicesImpl implements Services {
 
 	public JSONArray modifyAllCurrenciesToINR() {
 		JSONArray jsonArray = retrieveJSONArray();
-		JSONObject jsonObj = retriveJSONObject();
+		JSONObject jsonObj = retriveRatesJSONObject();
 		JSONArray jsonArray1 = new JSONArray();
 		for (int i = 0; i < jsonArray.length(); i++) {
 			JSONObject jsonObj1 = (JSONObject) jsonArray.get(i);
@@ -40,7 +40,7 @@ public class ServicesImpl implements Services {
 
 	}
 
-	public JSONObject retriveJSONObject() {
+	public JSONObject retriveRatesJSONObject() {
 		try {
 			URL obj = new URL("https://api.exchangeratesapi.io/latest");
 			HttpURLConnection httpConnection = (HttpURLConnection) obj.openConnection();
